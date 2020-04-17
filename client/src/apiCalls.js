@@ -1,8 +1,6 @@
 import {theMovieDb} from './api-keys';
 
 export function getMovieList (keyword) {
-  console.log(    `https://api.themoviedb.org/3/search/movie?api_key=${theMovieDb}&language=en-US&query=${encodeURIComponent(keyword)}&page=1&include_adult=false`
-  );
   return fetchMethod (
     `https://api.themoviedb.org/3/search/movie?api_key=${theMovieDb}&language=en-US&query=${encodeURIComponent(keyword)}&page=1&include_adult=false`
   )

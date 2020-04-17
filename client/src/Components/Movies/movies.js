@@ -22,7 +22,7 @@ function Movies({searching, triggerSearch}) {
     <div>
       {movies && movies.results.slice(0,10).map(movie => <SingleMovie key = {movie.id} title = {movie.title} posterPath = {movie.poster_path} date = {movie.release_date} />
       )}
-      <p>"No more movies, try another search"</p>
+      <p>No more movies, if your movie is not in the list try another search</p>
     </div>
   )
 
