@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react';
 import SingleMovie from '../Single movie/singleMovie';
 import {getMovieList} from '../../apiCalls';
 
-// const data = getMovieList().then(res => res.results.map(el=>el.title));
-// CALL DATA INSIDE USEEFFECT AND SAVE THEM ON STATE! 
 
 function Movies({searching, triggerSearch}) {
   const [movies, setMovies] = useState ();
