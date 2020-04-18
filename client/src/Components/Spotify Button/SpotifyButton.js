@@ -13,9 +13,13 @@ function SpotifyButton({ title, songs}) {
   const [playlist, setPlaylist] = useState(null);
   const [idTracks, setIdTracks] = useState(null);
 
-  const setPlaylistToState = async () => {
+  const doingGodWorks = async () => {
     const playlist = await createPlaylist(spotifyUser.spotifyUserId, title, spotifyUser.tokenSpotify )
-    setPlaylist(playlist)
+    console.log(playlist);
+    const songIds = await searchSongs(songs, spotifyUser.tokenSpotify);
+    console.log(songIds);
+    const addingSongToPlaylist = await addSongs (songIds, playlist.id, spotifyUser.tokenSpotify);
+    console.log(addingSongToPlaylist)
   }
 
   const setIdTracksToState = async () => {
@@ -39,7 +43,7 @@ function SpotifyButton({ title, songs}) {
 
   return (
     <div>
-      <button onClick={setIdTracksToState}> Import playlist on Spotify</button>
+      <button onClick={doingGodWorks}> Import playlist on Spotify</button>
       {/* {playlist && JSON.stringify(playlist)}
       {idTracks && idTracks.map(id => <p>{id}</p>)} */}
       <button onClick={logPlaylist}>Log Playlist state</button>

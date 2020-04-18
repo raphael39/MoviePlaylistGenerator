@@ -48,7 +48,9 @@ export async function searchSongs (songs, token) {
 export async function addSongs (songsId, playlistId, token) {
   let queryWithoutId = "spotify:track:"
   let query = songsId.map(id=>`${queryWithoutId+id}`).join();
-  const url = `https://api.spotify.com/v1/users/${playlistId}/${encodeURIComponent(query)}`;
+  console.log(songsId, query)
+  const url = `https://api.spotify.com/v1/playlists/${playlistId}/tracks?uris=${encodeURIComponent(query)}`;
+  console.log(url);
   const response = await fetch(url, {
     method: 'POST',
     mode: 'cors',
