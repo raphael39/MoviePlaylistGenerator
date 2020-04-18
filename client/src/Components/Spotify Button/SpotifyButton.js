@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import SpotifyContext from '../../SpotifyContext';
 import { Alert } from 'react-alert';
-import {createPlaylist, searchSongs} from './SpotifyPlaylistFunctions';
+import {createPlaylist, searchSongs, addSongs} from './SpotifyPlaylistFunctions';
 
 
 
