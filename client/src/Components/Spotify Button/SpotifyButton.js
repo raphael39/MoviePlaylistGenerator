@@ -1,85 +1,56 @@
-import React, { useState, useEffect } from 'react';
-import SpotifyLogin from 'react-spotify-login';
+
+import React, { useState, useEffect, useContext } from 'react';
+import SpotifyContext from '../../SpotifyContext';
+import { Alert } from 'react-alert';
+import {createPlaylist, searchSongs} from './SpotifyPlaylistFunctions';
 
 
 
+function SpotifyButton({ title, songs}) {
 
-function SpotifyButton({ title }) {
+  const spotifyUser = useContext(SpotifyContext);
 
-  const [token, setToken] = useState();
-  const [userID, setUserID] = useState();
+  const [playlist, setPlaylist] = useState(null);
+  const [idTracks, setIdTracks] = useState(null);
 
-  const onSuccess = response => setToken(response.access_token);
-  const onFailure = response => console.error(response);
-// ---------------------------
-  // useEffect (() => {
-  //   askingdata(url, options).then(data=>setUserID(data))
-  // }, [token])
+  const setPlaylistToState = async () => {
+    const playlist = await createPlaylist(spotifyUser.spotifyUserId, title, spotifyUser.tokenSpotify )
+    setPlaylist(playlist)
+  }
 
-  // // getting ID
-  // const url = "	https://api.spotify.com/v1/me";
+  const setIdTracksToState = async () => {
+    const ids = await searchSongs(songs, spotifyUser.tokenSpotify)
+    setIdTracks(ids)
+  }
 
-  // const options = {
-  //   headers: {
-  //     Authorization: `Bearer ${token}`
-  //   }
-  // };
-  
-  
-  // const askingdata = function (url, options){
-  //   return fetch(url, options)
-  //   .then( res => res.json() )
-  //   .then( data => console.log(data) )};
+  const logPlaylist = () => console.log("playlist", playlist);
+  const logIds = () => console.log("ids", idTracks);
 
-// create playlist 
-// POST https://api.spotify.com/v1/users/{user_id}/playlists
+  //console.log(songs) //array of obj [ {song: "Lucid Memory", artist: "GERARD BAUER AND MIKE BAUER"}, etc]
+  if(spotifyUser.tokenSpotify===undefined) {
+    return(
+      <div>
+      <button onClick={() => 
+        {alert('Login Required!')}
+      }> LogIn to your Spotify account.</button>
+    </div>  
+    )
+  };
 
-    // const id= "11102616416";
-    const url = "https://api.spotify.com/v1/users/11102616416/playlists"
-
-    async function createPlaylist(url = '', data = {}) {
-      // Default options are marked with *
-      const response = await fetch(url, {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json'
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        Accept: "application/json",
-        // redirect: 'follow', // manual, *follow, error
-        // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        body: JSON.stringify(data) // body data type must match "Content-Type" header
-      });
-      return response.json(); // parses JSON response into native JavaScript objects
-    }
-
-    const option = {
-      name: "create by my app :) ",
-      public: false,
-      description: "maramao"
-    }
-
-    if (token) {
-      console.log(token, "done"); console.log(option , url); createPlaylist(url, option); 
-    }
-  
-  // -------------- 
   return (
     <div>
-        <SpotifyLogin clientId="a312d86273d043bdb89d0ea0112ac404"
-    redirectUri="http://localhost:3000/"
-    onSuccess={onSuccess}
-    onFailure={onFailure}/>
+      <button onClick={setIdTracksToState}> Import playlist on Spotify</button>
+      {/* {playlist && JSON.stringify(playlist)}
+      {idTracks && idTracks.map(id => <p>{id}</p>)} */}
+      <button onClick={logPlaylist}>Log Playlist state</button>
+      <button onClick={logIds}>Log Ids state</button>
 
-    </div>
-
-    // <div>
-    //   <button> Import playlist on Spotify</button>
-    // </div>    
+    </div>    
   )
 }
 
 export default SpotifyButton;
+
+
+
+

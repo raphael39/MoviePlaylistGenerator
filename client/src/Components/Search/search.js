@@ -15,7 +15,7 @@ function Search() {
 return (
   <div className="Search">
     <form onSubmit = {submittingSearch}>
-      <label>Write your movie title here (try "the"): 
+      <label>Write your movie title here: 
       <br/>
         <input type='text' onChange = {e=> setSearching(e.target.value)}></input>
       </label>

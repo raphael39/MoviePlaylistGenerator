@@ -11,11 +11,10 @@ function Movies({searching, triggerSearch}) {
     getMovieList(searching).then(data => setMovies (data))
   }, [triggerSearch])
 
+  console.log("movies")
 
   if(!(searching)) { return <p><span role='img' aria-label="up">👆</span> Search a movie up here <span role='img' aria-label="up">👆</span></p>}
   
-  console.log("movies", movies)
-
   return (
     <div>
       {movies && movies.results.slice(0,10).map(movie => <SingleMovie key = {movie.id} title = {movie.title} posterPath = {movie.poster_path} date = {movie.release_date} />
