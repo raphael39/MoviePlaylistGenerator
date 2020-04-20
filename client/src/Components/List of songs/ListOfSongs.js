@@ -20,9 +20,9 @@ function ListOfSongs({ title }) {
   return (
     <div className="listOfSong">
       <ul>
-      <p>{title} playlist: </p>
+      <p style={{textAlign: "center", marginBottom: "25px"}}>{title} playlist: </p>
       {songs && songs.map(song=><li key={song.song}>{song.song} by {song.artist.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')}</li>)}
-      {!songs && <p>No playlist yet! We are working on it, stay tuned!</p>}
+      {!songs && <p className="noPlaylist">No playlist yet! We are working on it, stay tuned!</p>}
       </ul>
       <SpotifyButton title={title} songs={songs}/>
     </div>    

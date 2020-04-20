@@ -1,7 +1,7 @@
 .spotifyButton{
   display: inline-block;
   position: relative;
-  left: 40px;
+  left: 0px;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
@@ -15,6 +15,7 @@
   text-overflow: clip;
   background: rgba(255,255,255,1);
   box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2);
+  margin-top: 10px;
 }
 
 .spotifyButton:hover{

@@ -24,16 +24,16 @@ function SpotifyButton({ title, songs}) {
   if(spotifyUser.tokenSpotify===undefined) {
     return(
       <div>
-      <button className="spotifyButton" onClick={() => 
+      <button className="spotifyButton" style={{left: "30px"}} onClick={() => 
         {alert('Login Required!')}
-      }> LogIn to your Spotify account.</button>
+      }> LogIn to your Spotify <br/> account.</button>
     </div>  
     )
   };
 
   return (
     <div>
-      <button className="spotifyButton" onClick={magicHappening}> Import playlist on Spotify</button>
+      <button className="spotifyButton" style={{left: "60px"}} onClick={magicHappening}> Import playlist <br/>   on Spotify</button>
     </div>    
   )
   

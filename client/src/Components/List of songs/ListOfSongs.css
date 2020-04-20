@@ -1,3 +1,21 @@
 .listOfSong{
-  margin-top:50px
+  margin-top:50px;
+  margin: 0;
+  max-width: 347px;
+  text-align: left;
+  font-size: 18px;
+  /* font: normal 18px/normal "Times New Roman", Courier, monospace; */
+}
+
+ul{
+  padding:0px;
+}
+
+li{
+  margin-bottom: 5px;
+  font: normal 18px/normal "Times New Roman", Courier, monospace;
+}
+
+.noPlaylist{
+  font: normal 18px/normal "Times New Roman", Courier, monospace;
 }
