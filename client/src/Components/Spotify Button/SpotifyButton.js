@@ -1,8 +1,10 @@
-
 import React, { useState, useEffect, useContext } from 'react';
 import SpotifyContext from '../../SpotifyContext';
 import { Alert } from 'react-alert';
 import {createPlaylist, searchSongs, addSongs} from './SpotifyPlaylistFunctions';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -10,27 +12,18 @@ function SpotifyButton({ title, songs}) {
 
   const spotifyUser = useContext(SpotifyContext);
 
-  const [playlist, setPlaylist] = useState(null);
-  const [idTracks, setIdTracks] = useState(null);
+  const notify = () => toast(title + " Playlist Imported Successfully");
+  toast.configure()
+
 
   const doingGodWorks = async () => {
     const playlist = await createPlaylist(spotifyUser.spotifyUserId, title, spotifyUser.tokenSpotify )
-    console.log(playlist);
     const songIds = await searchSongs(songs, spotifyUser.tokenSpotify);
-    console.log(songIds);
     const addingSongToPlaylist = await addSongs (songIds, playlist.id, spotifyUser.tokenSpotify);
-    console.log(addingSongToPlaylist)
+    console.log("playlist imported successfully");
+    await notify();
   }
 
-  const setIdTracksToState = async () => {
-    const ids = await searchSongs(songs, spotifyUser.tokenSpotify)
-    setIdTracks(ids)
-  }
-
-  const logPlaylist = () => console.log("playlist", playlist);
-  const logIds = () => console.log("ids", idTracks);
-
-  //console.log(songs) //array of obj [ {song: "Lucid Memory", artist: "GERARD BAUER AND MIKE BAUER"}, etc]
   if(spotifyUser.tokenSpotify===undefined) {
     return(
       <div>
