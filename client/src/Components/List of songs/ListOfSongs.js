@@ -25,8 +25,6 @@ function ListOfSongs({ title }) {
       {!songs && <p>No playlist yet! We are working on it, stay tuned!</p>}
       </ul>
       <SpotifyButton title={title} songs={songs}/>
-      <br/>
-      <button >Import playlist on Youtube</button>
     </div>    
   )
 }

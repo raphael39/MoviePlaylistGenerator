@@ -21,6 +21,7 @@ export async function createPlaylist (userId, movieTitle, token) {
 }
 
 export async function searchSongs (songs, token) {
+  if(!songs) return;
   async function asyncForEach(array, callback) {
     for (let index = 0; index < array.length; index++) {
       await callback(array[index], index, array);
@@ -46,6 +47,7 @@ export async function searchSongs (songs, token) {
 }
 
 export async function addSongs (songsId, playlistId, token) {
+  if(!songsId) return;
   let queryWithoutId = "spotify:track:"
   let query = songsId.map(id=>`${queryWithoutId+id}`).join();
   console.log(songsId, query)
