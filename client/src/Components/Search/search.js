@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Movies from '../Movies/movies';
+import './search.css'
 
 
 function Search() {
@@ -17,8 +18,10 @@ return (
     <form onSubmit = {submittingSearch}>
       <label>Write your movie title here: 
       <br/>
-        <input type='text' onChange = {e=> setSearching(e.target.value)}></input>
+      <br/>
+        <input className="search" type='text' onChange = {e=> setSearching(e.target.value)}></input>
       </label>
+      <button className="searchButton" onClick={submittingSearch}>Search</button>
     </form>
     {triggerSearch && <Movies searching = {searching} triggerSearch = {triggerSearch}/>}
     </div>

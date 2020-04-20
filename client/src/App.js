@@ -26,8 +26,6 @@ function App() {
       <Logins token={tokenSpotify} setTokenSpotify={setTokenSpotify}></Logins>
       <SpotifyContext.Provider value={{tokenSpotify: tokenSpotify, spotifyUserId: spotifyUserId}} >
         <Search></Search>
-        <Api></Api>
-        <BackEnd></BackEnd>
       </SpotifyContext.Provider>
     </div>
   );

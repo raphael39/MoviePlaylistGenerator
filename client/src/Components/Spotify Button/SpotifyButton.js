@@ -44,11 +44,6 @@ function SpotifyButton({ title, songs}) {
   return (
     <div>
       <button onClick={doingGodWorks}> Import playlist on Spotify</button>
-      {/* {playlist && JSON.stringify(playlist)}
-      {idTracks && idTracks.map(id => <p>{id}</p>)} */}
-      <button onClick={logPlaylist}>Log Playlist state</button>
-      <button onClick={logIds}>Log Ids state</button>
-
     </div>    
   )
 }

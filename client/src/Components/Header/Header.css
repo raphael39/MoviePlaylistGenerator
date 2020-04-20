@@ -3,26 +3,6 @@
   justify-content: center;
   border-bottom: solid;
   border-color: lightgray;
+  padding-bottom: 10px;
 
 }
-/* 
-.intro{
-  font-weight: bolder;
-  font-size: 36px;
-  background-color: black;
-  font-family: Georgia, serif;
-  align-self: flex-start;
-  flex: 1 1 auto;
-   height: fit-content; 
-  margin: 1% 10%;
-  border-radius: 5px;
-opacity: 0.8; 
-  min-width: 600px;
-
-} */
-
-/* .header{
-  display: grid;
-  grid-column: 1fr 1fr 1fr;
-  grid-row: 1fr 1fr;
-} */

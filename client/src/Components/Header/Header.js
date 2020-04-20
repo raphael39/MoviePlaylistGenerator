@@ -4,9 +4,6 @@ import intro1 from '../../images/intro1.png';
 import intro2 from '../../images/intro2.png';
 import intro3 from '../../images/intro3.png';
 import intro4 from '../../images/intro4.png';
-
-
-
 import './Header.css';
 
 function Header() {
@@ -15,7 +12,7 @@ function Header() {
 //width:"60vw",height:"70vh"
   return (
     <div className="header">
-      <div style={{width:"35vw",height:"40vh"}}>
+      <div style={{width:"452px",height:"283px"}}>
         <Gallereact
           images={images} 
           autoPlay={true}  

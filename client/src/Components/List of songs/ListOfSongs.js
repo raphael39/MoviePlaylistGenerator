@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import SpotifyButton from '../Spotify Button/SpotifyButton'
+import SpotifyButton from '../Spotify Button/SpotifyButton';
+import './ListOfSongs.css'
 
 function ListOfSongs({ title }) {
   const [songs, setSongs] = useState();
 
-  //MockData, artist name left in uppercase to mimic tunefind db
+  //MockData, artist name left in uppercase to mimic tunefind API
   if (title === "Donnie Darko" && !songs) {
     let fakeDb = [{song: "Lucid Memory", artist: "GERARD BAUER AND MIKE BAUER"}, {song: "Never Tear Us Apart", artist: "INXS"}, {song: "Head Over Heels", artist: "TEARS FOR FEARS"}, {song: "Under the Milky Way", artist: "THE CHURCH"}, {song: "Mad World", artist: "MICHAEL ANDREWS & GARY JULES"}, {song: "Time Travel" , artist: "MICHAEL ANDREWS"}, {song:"Voices Carry" , artist:"'TIL TUESDAY"}, {song:"Waltz in the 4th Dimension" , artist:"MICHAEL ANDREWS"}];
     setSongs(fakeDb)
@@ -17,7 +18,7 @@ function ListOfSongs({ title }) {
 
 
   return (
-    <div>
+    <div className="listOfSong">
       <ul>
       <p>{title} playlist: </p>
       {songs && songs.map(song=><li key={song.song}>{song.song} by {song.artist.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')}</li>)}
