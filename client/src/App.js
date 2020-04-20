@@ -3,8 +3,9 @@ import Logins from './Components/Logins/Logins';
 import Search from './Components/Search/search';
 import Api from './Components/Api/api';
 import BackEnd from './Components/BackEnd/BackEnd';
-import SpotifyContext from './SpotifyContext'
-import {getSpotifyUserId} from './apiCalls'
+import SpotifyContext from './SpotifyContext';
+import {getSpotifyUserId} from './apiCalls';
+import Header from './Components/Header/Header';
 
 import './App.css';
 
@@ -21,8 +22,8 @@ function App() {
   return (
 
     <div className="App">
+      <Header></Header>
       <Logins token={tokenSpotify} setTokenSpotify={setTokenSpotify}></Logins>
-      <h1>Find your favorite ost and import them on Youtube or Spotify</h1>
       <SpotifyContext.Provider value={{tokenSpotify: tokenSpotify, spotifyUserId: spotifyUserId}} >
         <Search></Search>
         <Api></Api>

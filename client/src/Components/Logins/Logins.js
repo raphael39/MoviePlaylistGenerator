@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import SpotifyLogin from 'react-spotify-login';
+// import SpotifyLogin from 'react-spotify-login';
+import SpotifyLogin from './react-spotify-login/src/SpotifyLogin';
 import {spotifyClientID} from '../../api-keys';
+import LoginYoutube from './LoginYoutube'
+
 
 
 function Logins({token, setTokenSpotify}) {
 
   const onSuccessSpotify = response => setTokenSpotify(response.access_token);
   const onFailureSpotify = response => console.error(response);
+
 
   const loginAgain = () => {
     return setTokenSpotify();
@@ -18,6 +22,8 @@ function Logins({token, setTokenSpotify}) {
       redirectUri="http://localhost:3000/"
       onSuccess={onSuccessSpotify}
       onFailure={onFailureSpotify}/>}
+      <LoginYoutube/>
+
       {token && <p>Spotify logged in SuccessFully.<span role='img' aria-label="rock">🤘</span></p>}
       {token && <button onClick={loginAgain}>"Login Again"</button>}
     </div>
