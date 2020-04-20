@@ -16,7 +16,7 @@ function Header() {
         <Gallereact
           images={images} 
           autoPlay={true}  
-          duration={6000}
+          duration={5000}
           displayDot={true} 
           loop={false}
           arrowOnHover={true}

@@ -13,9 +13,7 @@ function Movies({searching, triggerSearch}) {
   }, [triggerSearch])
 
   console.log("movies")
-
-  if(!(searching)) { return <p><span role='img' aria-label="up">👆</span> Search a movie up here <span role='img' aria-label="up">👆</span></p>}
-  
+    
   return (
     <div>
         <div className='movies'>
