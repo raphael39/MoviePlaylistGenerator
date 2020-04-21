@@ -29,7 +29,14 @@ export async function searchSongs (songs, token) {
   };
   const result = [];
   await asyncForEach(songs, async (song) => {
-      const response = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(song.song)}%20artist:${encodeURIComponent(song.artist)}&type=track&limit=10`, {
+    console.log(`https://api.spotify.com/v1/search?q=${encodeURIComponent(song.song)}%20artist:${encodeURIComponent(song.artist)}&type=track&limit=10`);
+    let url ='';
+    if(song.artist) {
+      url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(song.song)}%20artist:${encodeURIComponent(song.artist)}&type=track&limit=10`;
+    } else {
+      url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(song.song)}&type=track&limit=10`;
+    }    
+    const response = await fetch(url, {
         method: 'GET',
         mode: 'cors',
         headers: {
@@ -39,10 +46,12 @@ export async function searchSongs (songs, token) {
         Accept: 'application/json',
       });
       const res = await response.json();
+      console.log("res single song: ", res)
       const id = res.tracks.items[0]!== undefined && res.tracks.items[0].id;
       id && result.push(id);
     }
   )
+  console.log("result search final: ", result)
   return result;
 }
 

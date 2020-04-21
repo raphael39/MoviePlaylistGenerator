@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Movies from '../Movies/movies';
 import './search.css';
-import Wikipedia from './wikipedia'
 import iconSearch from '../../images/Search-512.webp';
 
 
@@ -17,8 +16,6 @@ function Search() {
   
 return (
   <div className="Search">
-      <Wikipedia/>
-
     <form onSubmit = {submittingSearch}>
       <label>Search: 
         <input className="search" type='text' onChange = {e=> setSearching(e.target.value)}></input>
