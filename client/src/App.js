@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Logins from './Components/Logins/Logins';
 import Search from './Components/Search/search';
-import Api from './Components/Api/api';
-import BackEnd from './Components/BackEnd/BackEnd';
 import SpotifyContext from './SpotifyContext';
 import {getSpotifyUserId} from './apiCalls';
 import Header from './Components/Header/Header';

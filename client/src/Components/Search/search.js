@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Movies from '../Movies/movies';
-import './search.css'
+import './search.css';
+import Wikipedia from './wikipedia'
+import iconSearch from '../../images/Search-512.webp';
 
 
 function Search() {
@@ -15,12 +17,14 @@ function Search() {
   
 return (
   <div className="Search">
+      <Wikipedia/>
+
     <form onSubmit = {submittingSearch}>
       <label>Search: 
         <input className="search" type='text' onChange = {e=> setSearching(e.target.value)}></input>
       </label>
       {/* <button className="searchButton" onClick={submittingSearch}>Search</button> */}
-      <img className="searchIcon" src="https://cdn0.iconfinder.com/data/icons/30-hardware-line-icons/64/Search-512.png" onClick={submittingSearch}></img>
+      <img className="searchIcon" src={iconSearch} onClick={submittingSearch}></img>
     </form>
     {!searching && triggerSearch===0 && <p><span role='img' aria-label="up">👆</span> Search a movie up here <span role='img' aria-label="up">👆</span></p>}
     {triggerSearch!==0 && <Movies searching = {searching} triggerSearch = {triggerSearch}/>}
