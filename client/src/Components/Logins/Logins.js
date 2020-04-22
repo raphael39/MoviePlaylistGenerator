@@ -24,7 +24,7 @@ function Logins({token, setTokenSpotify}) {
       onSuccess={onSuccessSpotify}
       onFailure={onFailureSpotify}/>}
 
-      {token && <button className="loginButton" onClick={loginAgain}>"Sign in Again"</button>}
+      {token && <button className="loginButton" onClick={loginAgain}>Logout</button>}
       {token && <p>Spotify logged in <span role='img' aria-label="rock">🤘</span></p>}
     </div>
   );

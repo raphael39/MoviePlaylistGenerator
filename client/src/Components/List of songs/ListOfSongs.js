@@ -7,7 +7,6 @@ function ListOfSongs({ title }) {
   const [songs, setSongs] = useState();
   const [artists, setArtists] = useState();
 
-  console.log("songs", songs, " artists: ", artists);
 
   if (songs && typeof(songs[0])!=="object") {
     const dbSongs = [];
@@ -20,7 +19,6 @@ function ListOfSongs({ title }) {
         dbSongs[i] = {song: songs[i], artist: undefined}
       }
     }
-    console.log("ListOfSongs -> dbSongs", dbSongs)
     setSongs(dbSongs);
     };
   
@@ -30,10 +28,9 @@ function ListOfSongs({ title }) {
       <ul>
       <p style={{textAlign: "center", marginBottom: "25px"}}>{title} playlist: </p>
       {songs && songs.map(song=><li key={song.song}>{song.song} {song.artist && <span>by {song.artist}</span>}</li>)}
-      {/* .toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ') */}
-      {/* {songs && songs.map(song=><li key={song}>{song}</li>)}
-      {(songs && artists) && songs.map} */}
-      {!songs && <p className="noPlaylist">No playlist yet! We are working on it, stay tuned!</p>}
+      {!songs && <p className="noPlaylist">Loading</p>}
+
+      {/* {!songs && <p className="noPlaylist">No playlist yet! We are working on it, stay tuned!</p>} */}
       </ul>
       <SpotifyButton title={title} songs={songs}/>
     </div>    

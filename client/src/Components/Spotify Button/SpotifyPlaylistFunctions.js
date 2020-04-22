@@ -5,7 +5,7 @@ export async function createPlaylist (userId, movieTitle, token) {
   const bodyOption = {
     name: `${movieTitle} SoundTrack`,
     public: false,
-    description: "Create by Movies Playlists Generator"
+    description: "Create by Movie Playlist Generator"
   };
   const response = await fetch(url, {
     method: 'POST',
@@ -29,7 +29,6 @@ export async function searchSongs (songs, token) {
   };
   const result = [];
   await asyncForEach(songs, async (song) => {
-    console.log(`https://api.spotify.com/v1/search?q=${encodeURIComponent(song.song)}%20artist:${encodeURIComponent(song.artist)}&type=track&limit=10`);
     let url ='';
     if(song.artist) {
       url = `https://api.spotify.com/v1/search?q=${encodeURIComponent(song.song)}%20artist:${encodeURIComponent(song.artist)}&type=track&limit=10`;
@@ -46,12 +45,10 @@ export async function searchSongs (songs, token) {
         Accept: 'application/json',
       });
       const res = await response.json();
-      console.log("res single song: ", res)
       const id = res.tracks.items[0]!== undefined && res.tracks.items[0].id;
       id && result.push(id);
     }
   )
-  console.log("result search final: ", result)
   return result;
 }
 
@@ -59,9 +56,7 @@ export async function addSongs (songsId, playlistId, token) {
   if(!songsId) return;
   let queryWithoutId = "spotify:track:"
   let query = songsId.map(id=>`${queryWithoutId+id}`).join();
-  console.log(songsId, query)
   const url = `https://api.spotify.com/v1/playlists/${playlistId}/tracks?uris=${encodeURIComponent(query)}`;
-  console.log(url);
   const response = await fetch(url, {
     method: 'POST',
     mode: 'cors',

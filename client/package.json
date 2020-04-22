@@ -12,7 +12,8 @@
     "react-scripts": "3.4.1",
     "react-spotify-login": "^0.9.1",
     "react-toastify": "^5.5.0",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "wtf_wikipedia": "^8.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

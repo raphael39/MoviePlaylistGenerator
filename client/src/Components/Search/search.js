@@ -13,7 +13,7 @@ function Search() {
     setTriggerSearch(triggerSearch+1);
     return; 
   }
-  
+
 return (
   <div className="Search">
     <form onSubmit = {submittingSearch}>
@@ -33,15 +33,4 @@ return (
 export default Search;
 
 
-// return (
-//   <div className="Search">
-//   <form onSubmit = {submittingMovie}>
-//     <label>Write your movie title here (try "the"): 
-//     <br/>
-//       <input type='text' onChange = {e=> setSearching(e.target.value)}></input>
-//     </label>
-//   </form>
-//   <Movies searching={searching}></Movies>
-//   </div>
-// );
-// }
+
