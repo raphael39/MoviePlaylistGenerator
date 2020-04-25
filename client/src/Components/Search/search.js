@@ -15,7 +15,7 @@ function Search() {
   }
 
 return (
-  <div className="Search">
+  <div data-testid="search" className="Search">
     <form onSubmit = {submittingSearch}>
       <label>Search: 
         <input className="search" type='text' onChange = {e=> setSearching(e.target.value)}></input>

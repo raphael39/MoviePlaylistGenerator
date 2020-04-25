@@ -72,4 +72,3 @@ function Wikipedia({ title, setSongs, setArtists }) {
 }
 
 export default Wikipedia;
-

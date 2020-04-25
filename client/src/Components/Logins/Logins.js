@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import SpotifyLogin from 'react-spotify-login';
 import SpotifyLogin from './react-spotify-login/src/SpotifyLogin';
-import {spotifyClientID} from '../../api-keys';
+import {apis} from '../../api-keys';
 import LoginYoutube from './LoginYoutube';
 import './logins.css';
 
@@ -19,7 +19,7 @@ function Logins({token, setTokenSpotify}) {
 
   return (
     <div className="Logins">
-      {!token && <SpotifyLogin clientId={spotifyClientID}
+      {!token && <SpotifyLogin clientId={apis.spotify_api}
       redirectUri="http://localhost:3000/"
       onSuccess={onSuccessSpotify}
       onFailure={onFailureSpotify}/>}

@@ -3,7 +3,7 @@ import ListOfSongs from '../List of songs/ListOfSongs';
 import './singleMovie.css'
 
 
-function SingleMovie({ title, posterPath, date }) {
+function SingleMovie({ title, posterPath, release_date }) {
 
   const [showPlaylist, setShowPlaylist] = useState(false);
   const showingButtonText = showPlaylist? "Hide Playlist" : "Show playlist";
@@ -13,7 +13,7 @@ function SingleMovie({ title, posterPath, date }) {
   }
 
   return (
-    <div className="singleMovie">
+    <div  data-testid="singleMovie" className="singleMovie">
     <div style={{marginBottom: "30px"}}>
       <span>
       <p style={{
@@ -32,7 +32,7 @@ function SingleMovie({ title, posterPath, date }) {
 
     </div>
       {(showPlaylist) && 
-      <ListOfSongs title = {title}/>
+      <ListOfSongs title = {title} release_date={release_date}/>
     }
   </div>    
   )
