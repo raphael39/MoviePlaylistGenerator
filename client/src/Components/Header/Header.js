@@ -11,7 +11,7 @@ function Header() {
   
 //width:"60vw",height:"70vh"
   return (
-    <div className="header">
+    <div className="header" data-testid='Header'>
       <div style={{width:"452px",height:"283px"}}>
         <Gallereact
           images={images} 
