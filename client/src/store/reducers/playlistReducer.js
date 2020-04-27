@@ -1,7 +1,7 @@
 
 const initState = {
   items: [],
-  movies: ['test'],
+  movies: [],
   soundtracks: []
 }
 
@@ -10,7 +10,7 @@ const playlistReducer = (state = initState, action) => {
     case 'ADD_MOVIES':
       console.log('Added movies', action.movie)
     case 'ADD_ITEM':
-      console.log('Added item', action.movie)
+      console.log('Added item', action.item)
   }
   return state
 }

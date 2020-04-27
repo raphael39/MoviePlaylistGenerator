@@ -5,15 +5,15 @@ import './movies.css'
 import { connect } from 'react-redux'
 import { addMovies } from '../../store/actions/addMovies'
 
-function Movies({searching, triggerSearch}, props) {
+function Movies(props ) {
+  const {items, movies, triggerSearch, searching} = props
 
-  console.log(props)
-  const [movies, setMovies] = useState()
-  const [title, setTitle] = useState();
+  console.log('Props: ', props)
+
 
  
   useEffect(() => {
-    getMovieList(searching).then(data => addMovies(data))
+    getMovieList(searching).then(data => props.addMovies(data))
   }, [triggerSearch])
 
 
@@ -32,13 +32,14 @@ function Movies({searching, triggerSearch}, props) {
 
 const mapStateToProps = state => {
   return {
+    items: state.playlist.items,
     movie: state.playlist.movie
   }
 }
 
 const mapDispatchToProps = dispatch => {
  return {
-   addMovie: (movies) => { dispatch(addMovies(movies)) }
+   addMovies: (movies) => { dispatch(addMovies(movies)) },
  }
 }
 
