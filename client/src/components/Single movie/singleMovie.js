@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import ListOfSongs from '../List of songs/ListOfSongs';
 import './singleMovie.css'
+import { connect } from 'react-redux'
+import {addItem} from '../../store/actions/addItem'
 
-
-function SingleMovie({ title, posterPath, release_date }) {
+function SingleMovie({ title, posterPath, release_date }, props) {
 
   const [showPlaylist, setShowPlaylist] = useState(false);
   const showingButtonText = showPlaylist? "Hide Playlist" : "Show playlist";
 
   const openPlaylist = () => {
+
     return setShowPlaylist(!showPlaylist)
   }
 
@@ -38,4 +40,16 @@ function SingleMovie({ title, posterPath, release_date }) {
   )
 }
 
-export default SingleMovie;
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    item: state.playlist.movies
+  }
+}
+
+const mapDispachToProps = (dispatch) => {
+  return {
+    addItem: (item)=> { dispatch(addItem(item))}
+  }
+}
+export default connect(mapStateToProps, mapDispachToProps)(SingleMovie);

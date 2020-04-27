@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {connect} from "react-redux";
 
 
 //
@@ -71,4 +72,11 @@ function Wikipedia({ title, setSongs, setArtists }) {
 
 }
 
-export default Wikipedia;
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    movies: state.playlist.movies
+  }
+}
+export default connect(mapStateToProps)(Wikipedia);
+

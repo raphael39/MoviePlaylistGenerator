@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SpotifyButton from '../Spotify Button/SpotifyButton';
 import Wikipedia from './wikipedia';
 import './ListOfSongs.css';
+import {connect} from "react-redux";
 
 function ListOfSongs({ title }) {
   const [songs, setSongs] = useState();
@@ -40,7 +41,14 @@ function ListOfSongs({ title }) {
 
 
 
-export default ListOfSongs;
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    movies: state.playlist.movies
+  }
+}
+export default connect(mapStateToProps)(ListOfSongs);
+
 
 
 

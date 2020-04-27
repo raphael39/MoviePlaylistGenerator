@@ -3,13 +3,17 @@ import SingleMovie from '../Single movie/singleMovie';
 import {getMovieList} from '../../apiCalls';
 import './movies.css'
 import { connect } from 'react-redux'
+import { addMovies } from '../../store/actions/addMovies'
 
 function Movies({searching, triggerSearch}, props) {
-  const [movies, setMovies] = useState ();
+
+  console.log(props)
+  const [movies, setMovies] = useState()
   const [title, setTitle] = useState();
+
  
   useEffect(() => {
-    getMovieList(searching).then(data => setMovies (data))
+    getMovieList(searching).then(data => addMovies(data))
   }, [triggerSearch])
 
 
@@ -27,9 +31,15 @@ function Movies({searching, triggerSearch}, props) {
 
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
-    movies: state
+    movie: state.playlist.movie
   }
 }
-export default connect(mapStateToProps())(Movies);
+
+const mapDispatchToProps = dispatch => {
+ return {
+   addMovie: (movies) => { dispatch(addMovies(movies)) }
+ }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Movies);
