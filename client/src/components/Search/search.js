@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import Movies from '../Movies/movies';
 import './search.css';
 import iconSearch from '../../images/Search-512.webp';
+import {connect} from 'react-redux';
+import { addItem } from '../../store/actions/addItem' 
 
 
-function Search() {
+function Search(props) {
+
+  console.log(props);
   const [searching, setSearching] = useState();
   const [triggerSearch, setTriggerSearch] = useState(0);
 
@@ -30,7 +34,13 @@ return (
 
 }
 
-export default Search;
+const mapDispatchToProps = dispatch => {
+  return {
+    addItem: (item => { dispatch(addItem(item)) })
+  }
+ }
+
+export default connect(null, mapDispatchToProps)(Search);
 
 
 

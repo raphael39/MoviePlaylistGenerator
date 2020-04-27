@@ -4,9 +4,9 @@
 
 .loginButton{
   background: linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
-  background-color: #44c767;
+  background-color: #35b657;
   border-radius: 28px;
-  border: 1px solid #18ab29;
+  border: 1px solid #12a123;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
@@ -19,7 +19,8 @@
 
 .loginButton:hover {
 	background:linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
-	background-color:#5cbf2a;
+  background-color:#91e468;
+  transform: scale(1.1);
 }
 
 .loginButton:active {
