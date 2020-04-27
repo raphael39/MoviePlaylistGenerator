@@ -4,7 +4,7 @@ import SpotifyLogin from './react-spotify-login/src/SpotifyLogin';
 import {theMovieDb, spotifyClientID} from '../../api-keys';
 import LoginYoutube from './LoginYoutube';
 import ReactDom from 'react-dom';
-import './logins.css';
+import './login.css';
 
 
 
@@ -21,18 +21,31 @@ function Logins({token, setTokenSpotify}) {
 
   return (
 
+    <div>
+
+      <h1 className="Headline">
+        Get your favorite Movie soundtracks in one Playlist
+      </h1>
+
     <div className="Logins">
+      
       {!token && <SpotifyLogin clientId={spotifyClientID}
+
+
 
       redirectUri="http://localhost:3000/login"
       onSuccess={onSuccessSpotify}
       onFailure={onFailureSpotify}/>}
 
-      {token && <button  className="loginButton"  onClick={loginAgain}>Logout</button>}
+ 
+
+      {token && <div class="block"><button  className="loginButton"  onClick={loginAgain}>Logout</button></div>}
       {token && <p data-testid='test-paragraph'>Spotify logged in <span role='img' aria-label="rock">🤘</span></p>}
 
        
      
+    </div>
+
     </div>
   );
 }
