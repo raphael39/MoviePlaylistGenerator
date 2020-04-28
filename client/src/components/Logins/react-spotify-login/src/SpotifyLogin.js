@@ -70,7 +70,7 @@ class GitHubLogin extends Component {
       attrs.className = className;
     }
 
-    return <button {...attrs} className="loginButton">{ children || buttonText }</button>;
+    return <div class="block"> <button {...attrs} className="loginButton">{ children || buttonText }</button></div>;
   }
 }
 
