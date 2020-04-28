@@ -15,6 +15,8 @@ function Search(props) {
     setTrigger(1)
   }
 
+  console.log(props)
+
 return (
   <div data-testid="search" className="Search">
     <form onSubmit = {submittingSearch}>
@@ -34,7 +36,8 @@ return (
 const mapStateToProps = state => {
   return {
     searching: state.playlist.searching,
-    trigger: state.playlist.triggerSearch
+    trigger: state.playlist.triggerSearch,
+    token: state.playlist.token
   }
 }
 

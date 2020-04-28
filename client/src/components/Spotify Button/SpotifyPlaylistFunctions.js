@@ -21,6 +21,7 @@ export async function createPlaylist (userId, movieTitle, token) {
 }
 
 export async function searchSongs (songs, token) {
+  console.log(token)
   if(!songs) return;
   async function asyncForEach(array, callback) {
     for (let index = 0; index < array.length; index++) {

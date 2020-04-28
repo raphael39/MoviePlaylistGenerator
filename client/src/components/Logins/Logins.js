@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 // import SpotifyLogin from 'react-spotify-login';
 import SpotifyLogin from './react-spotify-login/src/SpotifyLogin';
 import {apis} from '../../api-keys';
@@ -6,13 +6,26 @@ import LoginYoutube from './LoginYoutube';
 import './login.css';
 import { addToken} from "../../store/actions/addToken";
 import {connect} from "react-redux";
+import SpotifyContext from "../../SpotifyContext";
+import { getSpotifyUserId } from '../../apiCalls';
 
 
 function Logins(props) {
 
+  const spotifyUser = useContext(SpotifyContext);
 
-  const onSuccessSpotify = response => props.addToken(response.access_token);
+  const [tokenSpotify, setTokenSpotify] = useState();
+  const [spotifyUserId, setSpotifyUserId] = useState();
+
+  if(tokenSpotify && !spotifyUserId) {
+    getSpotifyUserId(tokenSpotify).then(user => setSpotifyUserId(user.id));
+  };
+
+  const onSuccessSpotify = response => setTokenSpotify(response.access_token);
   const onFailureSpotify = response => console.error(2, response);
+
+
+  console.log(tokenSpotify)
 
 
   const loginAgain = () => {
@@ -29,7 +42,7 @@ function Logins(props) {
 
     <div className="Logins">
       
-      {!props.token && <SpotifyLogin clientId={apis.spotify_api}
+      {!tokenSpotify && <SpotifyLogin clientId={apis.spotify_api}
 
 
 
@@ -39,8 +52,8 @@ function Logins(props) {
 
  
 
-      {props.token && <div class="block"><button  className="loginButton"  onClick={loginAgain}>Logout</button></div>}
-      {props.token && <p data-testid='test-paragraph'>Spotify logged in <span role='img' aria-label="rock">🤘</span></p>}
+      {tokenSpotify && <div class="block"><button  className="loginButton"  onClick={loginAgain}>Logout</button></div>}
+      {tokenSpotify && <p data-testid='test-paragraph'>Spotify logged in <span role='img' aria-label="rock">🤘</span></p>}
 
        
      
