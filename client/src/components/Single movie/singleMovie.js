@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ListOfSongs from '../List of songs/ListOfSongs';
 import './singleMovie.css'
 import { connect } from 'react-redux'
-import {addItem} from '../../store/actions/addItem'
+import { addSearching } from "../../store/actions/addSearch";
 
 function SingleMovie({ title, posterPath, release_date }, props) {
 
@@ -49,7 +49,7 @@ const mapStateToProps = state => {
 
 const mapDispachToProps = (dispatch) => {
   return {
-    addItem: (item)=> { dispatch(addItem(item))}
+    addSearching: (item)=> { dispatch(addSearching(item))}
   }
 }
 export default connect(mapStateToProps, mapDispachToProps)(SingleMovie);

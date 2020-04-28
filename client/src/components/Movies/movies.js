@@ -6,19 +6,12 @@ import { connect } from 'react-redux'
 import { addMovies } from '../../store/actions/addMovies'
 
 function Movies(props ) {
-  const { triggerSearch, searching} = props
 
-  console.log('Props: ', props.movies, triggerSearch, searching)
-
-
- 
   useEffect(() => {
-    getMovieList('watchmen').then(data => props.addMovies(data) )
+    getMovieList(props.searching).then(data => props.addMovies(data) )
   }, [1])
 
 
-  console.log(9,props)
-  console.log(2,props.items)
   return (
     <div>
         <div data-teestid="movies" className='movies'>
@@ -34,8 +27,7 @@ function Movies(props ) {
 
 const mapStateToProps = state => {
   return {
-    items: state.playlist.items,
-    movie: state.playlist.movie
+    movies: state.playlist.movies
   }
 }
 

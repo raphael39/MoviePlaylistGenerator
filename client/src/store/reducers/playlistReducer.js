@@ -1,6 +1,7 @@
 
 const initState = {
-  items: {},
+  searching: '',
+  triggerSearch: [],
   movies: [],
   soundtracks: []
 }
@@ -8,16 +9,21 @@ const initState = {
 const playlistReducer = (state = initState, action) => {
   switch(action.type) {
     case 'ADD_MOVIES':
-      console.log('Added movie', action.movies, 3,state.movies)
       return {
         ...state,
         movies: action.movies
       }
-    case 'ADD_ITEM':
-      console.log('Added item', action.item, 3,state.items)
+    case 'ADD_SEARCHING':
       return {
-        ...state,
-        items: action.items
+        ...state.searching,
+        searching: action.searching,
+
+      }
+    case 'ADD_TRIGGER':
+      return {
+        ...state.triggerSearch,
+        triggerSearch: action.triggerSearch
+
       }
   }
   return state
