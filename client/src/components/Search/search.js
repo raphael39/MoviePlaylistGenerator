@@ -8,10 +8,11 @@ import { addTriggerSearch } from "../../store/actions/addTrigger";
 
 function Search(props) {
 
+  const [trigger, setTrigger] = useState(0)
+
   const submittingSearch = (e) => {
     e.preventDefault();
-
-    return;
+    setTrigger(1)
   }
 
 return (
@@ -23,8 +24,8 @@ return (
       {/* <button className="searchButton" onClick={submittingSearch}>Search</button> */}
       <img className="searchIcon" src={iconSearch} onClick={submittingSearch}></img>
     </form>
-    {!props.searching  && <p><span role='img' aria-label="up">👆</span> Search a movie up here <span role='img' aria-label="up">👆</span></p>}
-    {props.searching.length > 0 && <Movies searching={props.searching}/>}
+    {trigger === 0 && !props.searching  && <p><span role='img' aria-label="up">👆</span> Search a movie up here <span role='img' aria-label="up">👆</span></p>}
+    {trigger > 0 && props.searching.length > 0 && <Movies searching={props.searching}/>}
     </div>
   );
 

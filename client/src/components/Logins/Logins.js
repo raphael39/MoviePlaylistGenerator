@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 // import SpotifyLogin from 'react-spotify-login';
 import SpotifyLogin from './react-spotify-login/src/SpotifyLogin';
-import {theMovieDb, spotifyClientID} from '../../api-keys';
+import {apis} from '../../api-keys';
 import LoginYoutube from './LoginYoutube';
-import ReactDom from 'react-dom';
 import './login.css';
+import { addToken} from "../../store/actions/addToken";
+import {connect} from "react-redux";
 
 
+function Logins(props) {
 
-function Logins({token, setTokenSpotify}) {
 
-
-  const onSuccessSpotify = response => setTokenSpotify(response.access_token);
-  const onFailureSpotify = response => console.error(response);
+  const onSuccessSpotify = response => props.addToken(response.access_token);
+  const onFailureSpotify = response => console.error(2, response);
 
 
   const loginAgain = () => {
-    return setTokenSpotify();
+    props.addToken()
   };
 
   return (
@@ -29,7 +29,7 @@ function Logins({token, setTokenSpotify}) {
 
     <div className="Logins">
       
-      {!token && <SpotifyLogin clientId={spotifyClientID}
+      {!props.token && <SpotifyLogin clientId={apis.spotify_api}
 
 
 
@@ -39,8 +39,8 @@ function Logins({token, setTokenSpotify}) {
 
  
 
-      {token && <div class="block"><button  className="loginButton"  onClick={loginAgain}>Logout</button></div>}
-      {token && <p data-testid='test-paragraph'>Spotify logged in <span role='img' aria-label="rock">🤘</span></p>}
+      {props.token && <div class="block"><button  className="loginButton"  onClick={loginAgain}>Logout</button></div>}
+      {props.token && <p data-testid='test-paragraph'>Spotify logged in <span role='img' aria-label="rock">🤘</span></p>}
 
        
      
@@ -51,5 +51,20 @@ function Logins({token, setTokenSpotify}) {
 }
 
 
+const mapStateToProps = state => {
+  return {
+    token: state.playlist.token,
+  }
+}
 
-export default Logins;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addToken: (token => { dispatch(addToken(token)) })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Logins);
+
+
+
