@@ -41,7 +41,6 @@ function SingleMovie({ title, posterPath, release_date }, props) {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     item: state.playlist.movies
   }
