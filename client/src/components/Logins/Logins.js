@@ -33,7 +33,7 @@ function Logins(props) {
 
 
 
-      redirectUri="http://localhost:3000/login"
+      redirectUri="http://localhost:3000/"
       onSuccess={onSuccessSpotify}
       onFailure={onFailureSpotify}/>}
 

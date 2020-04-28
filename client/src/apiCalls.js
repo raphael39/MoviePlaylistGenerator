@@ -1,8 +1,8 @@
-import {theMovieDb, spotifyClientID} from './api-keys';
+import {apis} from './api-keys';
 
 export function getMovieList (keyword) {
   return fetchMethod (
-    `https://api.themoviedb.org/3/search/movie?api_key=${theMovieDb}&language=en-US&query=${encodeURIComponent(keyword)}&page=1&include_adult=false`
+    `https://api.themoviedb.org/3/search/movie?api_key=${apis.moviedb_api}&language=en-US&query=${encodeURIComponent(keyword)}&page=1&include_adult=false`
   )
 }
 
