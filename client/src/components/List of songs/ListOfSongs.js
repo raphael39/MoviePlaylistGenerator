@@ -28,7 +28,7 @@ function ListOfSongs({ title }) {
       <Wikipedia title={title} setSongs={setSongs} setArtists={setArtists} />
       <ul>
         <p style={{textAlign: "center", marginBottom: "25px"}}>{title} playlist: </p>
-        {songs && songs.map(song=><li key={song.song}>{song.song} {song.artist && <span>by {song.artist}</span>}</li>)}
+        {songs && songs.map(song=><li key={song.song} >{/* <input type="checkbox"> */}{song.song} {song.artist && <span>by {song.artist}</span>}</li>)}
         {!songs && <p className="noPlaylist">Loading</p>}
 
         {/* {!songs && <p className="noPlaylist">No playlist yet! We are working on it, stay tuned!</p>} */}

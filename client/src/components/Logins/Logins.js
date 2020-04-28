@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import SpotifyLogin from 'react-spotify-login';
 import SpotifyLogin from './react-spotify-login/src/SpotifyLogin';
-import {apis} from '../../api-keys';
+import {spotifyClientID} from '../../api-keys';
 import LoginYoutube from './LoginYoutube';
 import './login.css';
 import { addToken} from "../../store/actions/addToken";
@@ -29,7 +29,7 @@ function Logins(props) {
 
     <div className="Logins">
       
-      {!props.token && <SpotifyLogin clientId={apis.spotify_api}
+      {!props.token && <SpotifyLogin clientId={spotifyClientID}
 
 
 
