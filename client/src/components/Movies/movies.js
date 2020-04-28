@@ -6,21 +6,22 @@ import { connect } from 'react-redux'
 import { addMovies } from '../../store/actions/addMovies'
 
 function Movies(props ) {
-  const {items, movies, triggerSearch, searching} = props
+  const { triggerSearch, searching} = props.items
 
-  console.log('Props: ', props)
+  console.log('Props: ', props.movies, triggerSearch, searching)
 
 
  
   useEffect(() => {
-    getMovieList(searching).then(data => props.addMovies(data))
-  }, [triggerSearch])
+    getMovieList('watchmen').then(data => props.addMovies(data) )
+  }, [1])
 
 
+  console.log(9,props.movies)
   return (
     <div>
         <div data-teestid="movies" className='movies'>
-          {movies && movies.results.slice(0,10).map(movie => <SingleMovie key = {movie.id} title = {movie.title}  posterPath = {movie.poster_path} release_date = {movie.release_date} />
+          {props.movies && props.movies.results.slice(0,10).map(movie => <SingleMovie key = {movie.id} title = {movie.title}  posterPath = {movie.poster_path} release_date = {movie.release_date} />
           )}
         </div>
       <p className="no-movies">No more movies, if your movie is not in the list try another search</p>
