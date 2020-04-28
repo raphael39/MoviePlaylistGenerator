@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { addMovies } from '../../store/actions/addMovies'
 
 function Movies(props ) {
-  const { triggerSearch, searching} = props.items
+  const { triggerSearch, searching} = props
 
   console.log('Props: ', props.movies, triggerSearch, searching)
 
@@ -17,7 +17,8 @@ function Movies(props ) {
   }, [1])
 
 
-  console.log(9,props.movies)
+  console.log(9,props)
+  console.log(2,props.items)
   return (
     <div>
         <div data-teestid="movies" className='movies'>

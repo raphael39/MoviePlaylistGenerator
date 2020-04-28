@@ -8,7 +8,8 @@ import { addItem } from '../../store/actions/addItem'
 
 function Search(props) {
 
-  const {searching, triggerSearch} = props.items
+  console.log(11, props.items)
+  const {searching, triggerSearch} = props
   props.addItem({searching: ''})
   props.addItem({triggerSearch: 0})
 
