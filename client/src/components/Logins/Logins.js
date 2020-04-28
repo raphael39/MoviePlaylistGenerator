@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 // import SpotifyLogin from 'react-spotify-login';
 import SpotifyLogin from './react-spotify-login/src/SpotifyLogin';
-import {apis} from '../../api-keys';
+import {spotifyClientID} from '../../api-keys';
 import LoginYoutube from './LoginYoutube';
 import './login.css';
 import { addToken} from "../../store/actions/addToken";
@@ -24,10 +24,6 @@ function Logins(props) {
   const onSuccessSpotify = response => setTokenSpotify(response.access_token);
   const onFailureSpotify = response => console.error(2, response);
 
-
-  console.log(tokenSpotify)
-
-
   const loginAgain = () => {
     props.addToken()
   };
@@ -42,11 +38,8 @@ function Logins(props) {
 
     <div className="Logins">
       
-      {!tokenSpotify && <SpotifyLogin clientId={apis.spotify_api}
-
-
-
-      redirectUri="http://localhost:3000/"
+      {!tokenSpotify && <SpotifyLogin clientId={spotifyClientID}
+      redirectUri="http://localhost:3000/login"
       onSuccess={onSuccessSpotify}
       onFailure={onFailureSpotify}/>}
 
