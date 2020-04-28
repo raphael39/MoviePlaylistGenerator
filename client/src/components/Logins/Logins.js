@@ -39,7 +39,7 @@ function Logins(props) {
     <div className="Logins">
       
       {!tokenSpotify && <SpotifyLogin clientId={spotifyClientID}
-      redirectUri="http://localhost:3000/login"
+      redirectUri="http://localhost:3000/"
       onSuccess={onSuccessSpotify}
       onFailure={onFailureSpotify}/>}
 
