@@ -9,6 +9,8 @@
 
 ul{
   padding:0px;
+  list-style: none;
+  padding: 5px;
 }
 
 li{
@@ -20,3 +22,19 @@ li{
 .noPlaylist{
   font: normal 18px/normal "Times New Roman", Courier, monospace;
 }
+
+.songListStyle {
+  flex-direction: row;
+}
+
+
+
+
+
+
+
+
+
+
+
+

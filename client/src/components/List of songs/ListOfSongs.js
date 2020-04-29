@@ -5,8 +5,10 @@ import './ListOfSongs.css';
 import {connect} from "react-redux";
 
 function ListOfSongs({ title }) {
+
   const [songs, setSongs] = useState();
   const [artists, setArtists] = useState();
+  const [checkedSongs, setCheckedSongs] = useState([]);
 
 
   if (songs && typeof(songs[0])!=="object") {
@@ -23,17 +25,34 @@ function ListOfSongs({ title }) {
     setSongs(dbSongs);
   };
 
+  
+
+  function handleCheckBox (song) {
+    let newArr = [...checkedSongs];
+    const foundIndex = newArr.indexOf(song);
+    if (foundIndex < 0) {
+      newArr.push(song);
+    }
+    else {
+      newArr.splice(foundIndex, 1);
+    }
+    setCheckedSongs(newArr);
+  }
+
+   
+
   return (
     <div className="listOfSong">
       <Wikipedia title={title} setSongs={setSongs} setArtists={setArtists} />
       <ul>
         <p style={{textAlign: "center", marginBottom: "25px"}}>{title} playlist: </p>
-        {songs && songs.map(song=><li key={song.song} >{/* <input type="checkbox"> */}{song.song} {song.artist && <span>by {song.artist}</span>}</li>)}
+        {songs && songs.map(song=><li key={song.song} ><input type="checkbox" className="checkbox-round" onClick={() => handleCheckBox(song)} />{song.song} {song.artist && <span>by {song.artist}</span>}</li>)}
         {!songs && <p className="noPlaylist">Loading</p>}
 
         {/* {!songs && <p className="noPlaylist">No playlist yet! We are working on it, stay tuned!</p>} */}
       </ul>
-      <SpotifyButton title={title} songs={songs}/>
+     {console.log(checkedSongs)}
+      <SpotifyButton title={title} songs={songs} checkedSongs={checkedSongs}/>
     </div>
   )
 }
