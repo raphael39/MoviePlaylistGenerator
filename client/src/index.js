@@ -18,7 +18,6 @@ import {
 import {createBrowserHistory} from 'history';
 import Logins from './components/Logins/Logins'
 import thunk from 'redux-thunk'
-import { ProtectedRoute } from './ProtectedRoute'
 
 const store = createStore(rootReducer, applyMiddleware(thunk) )
 
@@ -33,7 +32,7 @@ ReactDOM.render(
       <switch>
     <Route exact path="/Login" 
   component={Logins}  />
-   <ProtectedRoute exact path="/"
+   <Route exact path="/"
   component={App} />
       </switch>
     
