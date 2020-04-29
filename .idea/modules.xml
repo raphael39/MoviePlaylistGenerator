@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/railsonreact/app/javascript/.idea/javascript.iml" filepath="$USER_HOME$/railsonreact/app/javascript/.idea/javascript.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/soloProject-MoviePlaylist.iml" filepath="$PROJECT_DIR$/.idea/soloProject-MoviePlaylist.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../solo/app/src/.idea/src.iml" filepath="$PROJECT_DIR$/../../solo/app/src/.idea/src.iml" />
     </modules>

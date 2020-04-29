@@ -4,41 +4,68 @@ import Search from './components/Search/search';
 import SpotifyContext from './SpotifyContext';
 import { getSpotifyUserId } from './apiCalls';
 import Header from './components/Header/Header';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import {createBrowserHistory} from 'history';
 
 import './App.css';
+import {addToken} from "./store/actions/addToken";
+import {connect} from "react-redux";
+import SpotifyLogin from "./components/Logins/react-spotify-login/src/SpotifyLogin";
+import {spotifyClientID} from "./api-keys";
  
 
-
-function App() {
+function App(props) {
 
   const [tokenSpotify, setTokenSpotify] = useState();
   const [spotifyUserId, setSpotifyUserId] = useState();
-  const hist = createBrowserHistory;
 
-  if (tokenSpotify && !spotifyUserId) {
-    getSpotifyUserId(tokenSpotify).then((user) => setSpotifyUserId(user.id));
-  }
-  
+  if(tokenSpotify && !spotifyUserId) {
+    getSpotifyUserId(tokenSpotify).then(user => setSpotifyUserId(user.id));
+  };
+
+  const onSuccessSpotify = response => {setTokenSpotify(response.access_token)};
+  const onFailureSpotify = response => console.error(2, response);
 
   console.log('APP COMPONENT');
+  console.log(props)
+  const loginAgain = () => {
+    return setTokenSpotify();
+  };
 
   return (
     
     <div className="App">
       {/* <Header></Header> */}
-      
 
-      <SpotifyContext.Provider
-        value={{ tokenSpotify: tokenSpotify, spotifyUserId: spotifyUserId }}
-      >
-        <Search></Search>
-      </SpotifyContext.Provider>
-     
+
+
+      <div className="Logins">
+
+        {!tokenSpotify && <SpotifyLogin clientId={spotifyClientID}
+                                        redirectUri="http://localhost:3000/"
+                                        onSuccess={onSuccessSpotify}
+                                        onFailure={onFailureSpotify}/>}
+
+        {tokenSpotify &&  <SpotifyContext.Provider value={{ tokenSpotify: tokenSpotify, spotifyUserId: spotifyUserId }}> <Search></Search> </SpotifyContext.Provider>}
+        {/* <Header></Header> */}
+      </div>
     </div>
     
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    token: state.auth,
+  }
+}
+
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addToken: (token => { dispatch(addToken(token)) })
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
