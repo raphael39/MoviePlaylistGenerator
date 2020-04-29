@@ -4,7 +4,6 @@ const initState = {
   triggerSearch: '',
   movies: [],
   soundtracks: [],
-  token: ''
 }
 
 const playlistReducer = (state = initState, action) => {
@@ -27,13 +26,7 @@ const playlistReducer = (state = initState, action) => {
         triggerSearch: action.triggerSearch
 
       }
-    case 'ADD_TOKEN':
-      console.log('Token: ', action.token)
-      return {
-        ...state,
-        token: action.token
 
-      }
   }
   return state
 }

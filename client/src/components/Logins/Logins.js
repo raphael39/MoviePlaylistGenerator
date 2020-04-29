@@ -10,7 +10,9 @@ import SpotifyContext from "../../SpotifyContext";
 import { getSpotifyUserId } from '../../apiCalls';
 
 
+
 function Logins(props) {
+
 
   const spotifyUser = useContext(SpotifyContext);
 
@@ -21,13 +23,16 @@ function Logins(props) {
     getSpotifyUserId(tokenSpotify).then(user => setSpotifyUserId(user.id));
   };
 
-  const onSuccessSpotify = response => setTokenSpotify(response.access_token);
+  const onSuccessSpotify = response => {setTokenSpotify(response.access_token)};
   const onFailureSpotify = response => console.error(2, response);
 
   const loginAgain = () => {
-    props.addToken()
+    return setTokenSpotify();
   };
 
+
+
+  console.log(props)
   return (
 
     <div>
@@ -43,12 +48,13 @@ function Logins(props) {
       onSuccess={onSuccessSpotify}
       onFailure={onFailureSpotify}/>}
 
+
  
 
       {tokenSpotify && <div class="block"><button  className="loginButton"  onClick={loginAgain}>Logout</button></div>}
       {tokenSpotify && <p data-testid='test-paragraph'>Spotify logged in <span role='img' aria-label="rock">🤘</span></p>}
 
-       
+
      
     </div>
 
@@ -59,7 +65,7 @@ function Logins(props) {
 
 const mapStateToProps = state => {
   return {
-    token: state.playlist.token,
+    token: state.auth,
   }
 }
 
@@ -69,6 +75,7 @@ const mapDispatchToProps = dispatch => {
     addToken: (token => { dispatch(addToken(token)) })
   }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Logins);
 
