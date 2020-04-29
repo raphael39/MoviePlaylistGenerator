@@ -9,7 +9,7 @@ function Movies(props ) {
 
   useEffect(() => {
     getMovieList(props.searching).then(data => props.addMovies(data) )
-  }, [1])
+  }, )
 
 
   return (

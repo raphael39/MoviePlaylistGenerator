@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './SpotifyButton.css';
 
-function SpotifyButton({ title, songs}) {
+function SpotifyButton({ title, songs, checkedSongs}) {
 
   const spotifyUser = useContext(SpotifyContext);
 
@@ -16,6 +16,13 @@ function SpotifyButton({ title, songs}) {
   const magicHappening = async () => {
     const playlist = await createPlaylist(spotifyUser.spotifyUserId, title, spotifyUser.tokenSpotify )
     const songIds = await searchSongs(songs, spotifyUser.tokenSpotify);
+    const addingSongToPlaylist = await addSongs (songIds, playlist.id, spotifyUser.tokenSpotify);
+    console.log("playlist imported successfully");
+    await notify();
+  }
+  const magicHappening2 = async () => {
+    const playlist = await createPlaylist(spotifyUser.spotifyUserId, title, spotifyUser.tokenSpotify )
+    const songIds = await searchSongs(checkedSongs, spotifyUser.tokenSpotify);
     const addingSongToPlaylist = await addSongs (songIds, playlist.id, spotifyUser.tokenSpotify);
     console.log("playlist imported successfully");
     await notify();
@@ -32,8 +39,9 @@ function SpotifyButton({ title, songs}) {
   }; */
 
   return (
-    <div data-testid='spotifyButtonLoggedIn'>
-      <button className="spotifyButton" style={{left: "60px"}} onClick={magicHappening}> Import playlist <br/>   on Spotify</button>
+    <div className="buttonBox" data-testid='spotifyButtonLoggedIn'>
+      <button className="spotifyButton"  onClick={magicHappening}>  All songs <br/>in a <br/>playlist</button>
+      <button className="spotifyButton"  onClick={magicHappening2}>  Selected songs <br/>in a playlist</button>
     </div>    
   )
   

@@ -19,15 +19,15 @@ function Search(props) {
 
 return (
   <div data-testid="search" className="Search">
-    <form onSubmit = {submittingSearch}>
+    <form >
       <label>Search: 
         <input className="search" type='text' onChange = {e=> props.addSearching(e.target.value)}></input>
       </label>
       {/* <button className="searchButton" onClick={submittingSearch}>Search</button> */}
-      <img className="searchIcon" src={iconSearch} onClick={submittingSearch}></img>
+      <img className="searchIcon" src={iconSearch} onChange={submittingSearch}></img>
     </form>
     {trigger === 0 && !props.searching  && <p><span role='img' aria-label="up">👆</span> Search a movie up here <span role='img' aria-label="up">👆</span></p>}
-    {trigger > 0 && props.searching.length > 0 && <Movies searching={props.searching}/>}
+    {props.searching.length > 0 && <Movies searching={props.searching}/>}
     </div>
   );
 
