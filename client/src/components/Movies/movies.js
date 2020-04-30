@@ -8,7 +8,6 @@ import { addMovies } from '../../store/actions/addMovies'
 function Movies(props ) {
 
   useEffect(() => {
-    console.log('THIS ---->', props.searching);
     getMovieList(props.searching).then(data => props.addMovies(data) )
   }, )
 

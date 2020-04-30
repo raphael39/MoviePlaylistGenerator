@@ -4,7 +4,6 @@ import './search.css';
 import iconSearch from '../../images/Search-512.webp';
 import {connect} from 'react-redux';
 import { addSearching } from "../../store/actions/addSearch";
-import { addTriggerSearch } from "../../store/actions/addTrigger";
 
 function Search(props) {
 
@@ -38,8 +37,6 @@ return (
 const mapStateToProps = state => {
   return {
     searching: state.playlist.searching,
-    trigger: state.playlist.triggerSearch,
-    token: state.playlist.token
   }
 }
 
@@ -47,7 +44,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     addSearching: (item => { dispatch(addSearching(item)) }),
-    addTriggerSearch: (item => { dispatch(addTriggerSearch(item)) })
   }
  }
 
