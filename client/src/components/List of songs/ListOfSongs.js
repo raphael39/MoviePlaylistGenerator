@@ -3,14 +3,16 @@ import SpotifyButton from '../Spotify Button/SpotifyButton';
 import Wikipedia from './wikipedia';
 import './ListOfSongs.css';
 import {connect} from "react-redux";
+import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
 
 function ListOfSongs({ title }) {
 
   const [songs, setSongs] = useState();
   const [artists, setArtists] = useState();
   const [checkedSongs, setCheckedSongs] = useState([]);
+  const [display, setDisplay] = useState('none');
   const [loaded, setLoaded] = useState('')
-
 
   if (songs && typeof(songs[0])!=="object") {
     const dbSongs = [];
@@ -24,7 +26,7 @@ function ListOfSongs({ title }) {
       }
     }
     setSongs(dbSongs);
-  };
+  }; 
 
   
 
@@ -38,11 +40,11 @@ function ListOfSongs({ title }) {
       newArr.splice(foundIndex, 1);
     }
     setCheckedSongs(newArr);
+    
   }
 
-  const timer = setTimeout(() => {}, 1000);
+ 
 
-   
 
   return (
     <div className="listOfSong">
@@ -50,7 +52,8 @@ function ListOfSongs({ title }) {
       <ul>
         <p style={{textAlign: "center", marginBottom: "25px"}}>{title} playlist: </p>
         {songs && songs.map(song=><li key={song.song} ><input type="checkbox" className="checkbox-round" onClick={() => handleCheckBox(song)} />{song.song} {song.artist && <span>by {song.artist}</span>}</li>)}
-        {!songs && timer && <p className="noPlaylist">Sorry we don't have these songs yet!</p>}
+
+        <Box display={display}> <p className="noPlaylist">Sorry we don't have these songs yet!</p> </Box>
 
         {/* {!songs && <p className="noPlaylist">No playlist yet! We are working on it, stay tuned!</p>} */}
       </ul>
