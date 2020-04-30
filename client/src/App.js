@@ -2,11 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Search from './components/Search/search';
 import SpotifyContext from './SpotifyContext';
 import { getSpotifyUserId } from './apiCalls';
-import Header from './components/Header/Header';
-
 import './App.css';
-import {addToken} from "./store/actions/addToken";
-import {connect} from "react-redux";
 import SpotifyLogin from "./components/Logins/react-spotify-login/src/SpotifyLogin";
 import {spotifyClientID} from "./api-keys";
  
@@ -27,6 +23,7 @@ function App(props) {
   console.log(props)
   const loginAgain = () => {
     return setTokenSpotify();
+
   };
 
   return (
@@ -51,20 +48,10 @@ function App(props) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    token: state.auth,
-  }
-}
 
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addToken: (token => { dispatch(addToken(token)) })
-  }
-}
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
 
 

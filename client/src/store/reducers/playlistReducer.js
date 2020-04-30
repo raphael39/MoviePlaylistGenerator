@@ -1,9 +1,7 @@
 
 const initState = {
   searching: '',
-  triggerSearch: '',
   movies: [],
-  soundtracks: [],
 }
 
 const playlistReducer = (state = initState, action) => {
@@ -17,13 +15,6 @@ const playlistReducer = (state = initState, action) => {
       return {
         ...state.searching,
         searching: action.searching,
-
-      }
-    case 'ADD_TRIGGER':
-      console.log('Trigger: ', action.triggerSearch)
-      return {
-        ...state.triggerSearch,
-        triggerSearch: action.triggerSearch
 
       }
 
