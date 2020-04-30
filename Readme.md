@@ -1,11 +1,5 @@
 
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -13,7 +7,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="./client/public/dashboard.png" alt="Logo" width="100%" height="400">
+    <img src="./client/public/dashboard.png" alt="Logo" width="100%" height="800">
   </a>
 
   <h3 align="center">MoviePlaylist Generator</h3>
@@ -145,7 +139,7 @@ See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Spencer Saleban - [@Github](https://github.com/spencersaleban) - spencer@spencersaleban.com
+Spencer Saleban - [@Github](https://github.com/spencersaleban) - spencer@spencersaleban.com <br>
 Raphael Sutter - [@Github](https://github.com/raphael39) - raphael.sutter@t-online.de
 
 Project Link: [https://github.com/raphael39/solo](https://github.com/your_username/repo_name)
