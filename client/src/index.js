@@ -16,7 +16,6 @@ import {
   useLocation
 } from "react-router-dom";
 import {createBrowserHistory} from 'history';
-import Logins from './components/Logins/Logins'
 import thunk from 'redux-thunk'
 
 const store = createStore(rootReducer, applyMiddleware(thunk) )
@@ -30,8 +29,6 @@ ReactDOM.render(
 <Router History={hist} >
     <Provider store={store}>
       <switch>
-    <Route exact path="/Login" 
-  component={Logins}  />
    <Route exact path="/"
   component={App} />
       </switch>
