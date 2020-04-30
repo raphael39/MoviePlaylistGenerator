@@ -26,9 +26,13 @@ function ListOfSongs({ title }) {
       }
     }
     setSongs(dbSongs);
-  }; 
+  };
 
-  
+
+
+  useEffect(() => {if (songs === undefined) setDisplay('inline')})
+
+
 
   function handleCheckBox (song) {
     let newArr = [...checkedSongs];
@@ -51,7 +55,7 @@ function ListOfSongs({ title }) {
       <Wikipedia title={title} setSongs={setSongs} setArtists={setArtists} setLoaded={setLoaded} />
       <ul>
         <p style={{textAlign: "center", marginBottom: "25px"}}>{title} playlist: </p>
-        {songs && songs.map(song=><li key={song.song} ><input type="checkbox" className="checkbox-round" onClick={() => handleCheckBox(song)} />{song.song} {song.artist && <span>by {song.artist}</span>}</li>)}
+        {songs && songs.map(song=> <li key={song.song} ><input type="checkbox" className="checkbox-round" onClick={() => handleCheckBox(song)} />{song.song} {song.artist && <span>by {song.artist}</span>}</li>)}
 
         <Box display={display}> <p className="noPlaylist">Sorry we don't have these songs yet!</p> </Box>
 
