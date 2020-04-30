@@ -120,3 +120,16 @@ body {
 .block:after {
   filter: blur(50px);
 }
+
+.logoutButton {
+  position: fixed;
+  top: 3px;
+  left: 0px;
+  width: 7vw;
+  height: 4vh;
+  border-radius: 12px;
+  background-color: #74006e;
+  color: white;
+  min-width: 80px;
+  min-height: 20px;
+}

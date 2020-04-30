@@ -42,7 +42,7 @@ function App(props) {
                                         onSuccess={onSuccessSpotify}
                                         onFailure={onFailureSpotify}/>}
 
-        {tokenSpotify && <div class="block"><button  className="loginButton"  onClick={loginAgain}>Logout</button></div>}
+        {tokenSpotify && <div ><button  className="logoutButton"  onClick={loginAgain}>Logout 🚫</button></div>}
         {tokenSpotify &&  <SpotifyContext.Provider value={{ tokenSpotify: tokenSpotify, spotifyUserId: spotifyUserId }}> <Search></Search> </SpotifyContext.Provider>}
         {/* <Header></Header> */}
       </div>

@@ -28,6 +28,8 @@ return (
     </form>
     {trigger === 0 && !props.searching}
     {props.searching.length > 0 && <Movies searching={props.searching}/>}
+    
+
     </div>
   );
 

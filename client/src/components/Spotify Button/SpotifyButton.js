@@ -38,6 +38,8 @@ function SpotifyButton({ title, songs, checkedSongs}) {
     )
   }; */
 
+  
+
   return (
     <div className="buttonBox" data-testid='spotifyButtonLoggedIn'>
       <button className="spotifyButton"  onClick={magicHappening}>  All songs <br/>in a <br/>playlist</button>
