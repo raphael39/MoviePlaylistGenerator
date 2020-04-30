@@ -18,6 +18,7 @@ function Logins(props) {
 
   const [tokenSpotify, setTokenSpotify] = useState();
   const [spotifyUserId, setSpotifyUserId] = useState();
+  const [setLogInStatus, LoginStatus] = useState('false')
 
   if(tokenSpotify && !spotifyUserId) {
     getSpotifyUserId(tokenSpotify).then(user => setSpotifyUserId(user.id));
@@ -28,7 +29,18 @@ function Logins(props) {
 
   const loginAgain = () => {
     return setTokenSpotify();
+    
   };
+
+  const toggleLogin = () => {
+    console.log('-------------------->>>>>>>>>>> 🚀')
+    if (LoginStatus) {
+      setLogInStatus('false');
+    } else {
+      setLogInStatus('true');
+    }
+
+  }
 
 
 
@@ -45,13 +57,20 @@ function Logins(props) {
       
       {!tokenSpotify && <SpotifyLogin clientId={spotifyClientID}
       redirectUri="http://localhost:3000/"
-      onSuccess={onSuccessSpotify}
+      onSuccess={() => {
+        onSuccessSpotify(); 
+        
+      }}
+      
       onFailure={onFailureSpotify}/>}
 
 
  
 
-      {tokenSpotify && <div class="block"><button  className="loginButton"  onClick={loginAgain}>Logout</button></div>}
+      {tokenSpotify && <div class="block" className={LoginStatus ? 'loggedIn' : 'loggedOut' }><button onClick={ () => {
+        loginAgain();
+        console.log('TTTTTTTEEEeeeeeessssssstttttttttt');
+}}>Logout</button></div>}
       {tokenSpotify && <p data-testid='test-paragraph'>Spotify logged in <span role='img' aria-label="rock">🤘</span></p>}
 
 

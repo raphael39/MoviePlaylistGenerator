@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 const wtf = require('wtf_wikipedia');
 //
 
-function Wikipedia({ title, setSongs, setArtists }) {
+function Wikipedia({ title, setSongs, setArtists, setLoaded }) {
 
   const [wikiUrls, setWikiUrls] = useState();
   const [wikiUrl, setWikiUrl] = useState();
@@ -59,7 +59,8 @@ function Wikipedia({ title, setSongs, setArtists }) {
         if (key.includes("extra")) artists.push(data[key]);
       };
       if (titles[0]) { setSongs(titles) };
-      if (artists[0]) { setArtists(artists.slice(1)) };
+      if (artists[0]) { setArtists(artists.slice(1))
+      setLoaded('true') };
     });
     setWikiUrl();
     setWikiUrls();

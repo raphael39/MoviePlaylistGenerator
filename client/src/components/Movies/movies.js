@@ -11,6 +11,7 @@ function Movies(props ) {
     getMovieList(props.searching).then(data => props.addMovies(data) )
   }, )
 
+ //Yes
 
   return (
     <div>
