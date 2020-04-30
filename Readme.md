@@ -13,7 +13,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="./client/public/dashboard.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">MoviePlaylist Generator</h3>
@@ -26,7 +26,7 @@
     <br />
     <a href="https://github.com/raphael39/soloProject-MoviePlaylist/blob/master/Readme.md">View Demo</a>
     ·
-    <a href="https://github.com/raphael39/soloProject-MoviePlaylist/blob/master/issues">Report Bug</a>
+    <a href="https://github.com/raphael39/soloProject-MoviePlaylist/issues">Report Bug</a>
     ·
     <a href="https://github.com/raphael39/soloProject-MoviePlaylist/issues">Request Feature</a>
   </p>
@@ -54,7 +54,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
 Have you ever worried if you could find the soundtracks of the movie that you were lost in time while watching it? Don't worry we've got you! Your favorite playlist of all time is just a few clicks away from you. 
 
